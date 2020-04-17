@@ -23,6 +23,8 @@ using Force = unit_type<boost::units::si::force, _value_type>;
 using Mass = unit_type<boost::units::si::mass, _value_type>;
 using Area = unit_type<boost::units::si::area, _value_type>;
 using Power = unit_type<boost::units::si::power, _value_type>;
+using Energy = unit_type<boost::units::si::energy, _value_type>;
+using Frequency = unit_type<boost::units::si::frequency, _value_type>;
 using Irradiance = decltype(Power{} / Area{});
 using Phase = Angular;
 

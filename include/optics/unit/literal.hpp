@@ -23,21 +23,41 @@ struct value_type<boost::units::quantity<D, T>> {
     using type = T;
 };
 
-#define DECLARE_LITERAL(unit_type, constant, literal)                        \
-    inline unit_type operator""_##literal(long double value)                 \
-    {                                                                        \
-        return static_cast<value_type<unit_type>::type>(value) * (constant); \
+#define DECLARE_LITERAL_IMPL(unit_type, constant, literal)                       \
+    inline unit_type operator""_##literal(long double value)                     \
+    {                                                                            \
+        return static_cast<value_type<unit_type>::type>(value) * (SI::constant); \
     }
 
-DECLARE_LITERAL(Length, SI::meter, m)
-DECLARE_LITERAL(Length, SI::millimeter, mm)
-DECLARE_LITERAL(Time, SI::second, s)
-DECLARE_LITERAL(Time, SI::millisecond, ms)
-DECLARE_LITERAL(Time, SI::microsecond, us)
-DECLARE_LITERAL(Angular, SI::radian, rad)
-DECLARE_LITERAL(Angular, SI::milliradian, mrad)
-DECLARE_LITERAL(Area, SI::millimeter* SI::millimeter, mm2)
-DECLARE_LITERAL(Area, SI::meter* SI::meter, m2)
+#define DECLARE_LITERAL_IMPL_SQ(unit_type, constant, literal)   \
+    inline unit_type operator""_##literal##2(long double value) \
+    {                                                           \
+        return static_cast<value_type<unit_type>::type>(value)  \
+               * (SI::constant * SI::constant);                 \
+    }
+
+#define DECLARE_LITERAL(unit_type, constant, literal)            \
+    DECLARE_LITERAL_IMPL(unit_type, micro##constant, u##literal) \
+    DECLARE_LITERAL_IMPL(unit_type, milli##constant, m##literal) \
+    DECLARE_LITERAL_IMPL(unit_type, constant, literal)           \
+    DECLARE_LITERAL_IMPL(unit_type, killo##constant, k##literal) \
+    DECLARE_LITERAL_IMPL(unit_type, mega##constant, M##literal)
+
+#define DECLARE_LITERAL_SQ(unit_type, constant, literal)            \
+    DECLARE_LITERAL_IMPL_SQ(unit_type, micro##constant, u##literal) \
+    DECLARE_LITERAL_IMPL_SQ(unit_type, milli##constant, m##literal) \
+    DECLARE_LITERAL_IMPL_SQ(unit_type, constant, literal)           \
+    DECLARE_LITERAL_IMPL_SQ(unit_type, killo##constant, k##literal) \
+    DECLARE_LITERAL_IMPL_SQ(unit_type, mega##constant, M##literal)
+
+
+DECLARE_LITERAL(Length, meter, m)
+DECLARE_LITERAL_SQ(Area, meter, m)
+DECLARE_LITERAL(Time, second, s)
+DECLARE_LITERAL(Angular, radian, rad)
+DECLARE_LITERAL(Power, watt, W)
+DECLARE_LITERAL(Energy, joule, J)
+DECLARE_LITERAL(Frequency, hertz, Hz)
 
 
 }  // namespace SILiteral

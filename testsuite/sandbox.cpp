@@ -6,6 +6,7 @@
 int main()
 {
     Phase phi = 0.0_rad;
+    Length x = 0.1_um;
 
     double a = std::sin(phi);
 
