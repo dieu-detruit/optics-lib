@@ -11,8 +11,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(OPTICS_LIB LANGUAGES C CXX)
 
 # find packages
-find_package(Boost 1.65.1 REQUIRED
-             COMPONENTS system)
 find_package(Eigen3 REQUIRED)
 
 # add library for optics
@@ -23,8 +21,8 @@ target_include_directories(optics PRIVATE
     )
 target_include_directories(optics PUBLIC
         ${EIGEN3_INCLUDE_DIR}
-        ${Boost_INCLUDE_DIRS}
         include
+        external/unit/include
     )
 
 # add test executables

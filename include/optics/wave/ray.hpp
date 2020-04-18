@@ -8,9 +8,9 @@
 namespace Optics::Wave
 {
 
-template <class power_type = Irradiance>
+template <class power_type = Unit::Irradiance>
 struct Ray : public Geometry::Ray<power_type> {
-    Phase phase;
+    Unit::Phase phase;
 };
 
 

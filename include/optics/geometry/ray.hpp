@@ -7,7 +7,7 @@
 namespace Optics::Geometry
 {
 
-template <class power_type = Irradiance>
+template <class power_type = Unit::Irradiance>
 struct Ray {
     Eigen::Vector3d source;  // unit: mm
     Eigen::Vector3d dir;     // unit: /

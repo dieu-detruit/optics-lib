@@ -5,10 +5,10 @@
 
 int main()
 {
-    Phase phi = 0.0_rad;
-    Length x = 0.1_um;
+    Unit::Phase phi = 0.0_rad;
+    Unit::Length x = 0.1_um;
 
-    double a = std::sin(phi);
+    double a = Unit::sin(phi);
 
     return 0;
 }
