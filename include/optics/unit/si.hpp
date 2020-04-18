@@ -24,7 +24,7 @@ namespace SI
 // Unit Constants
 DECLARE_CONST(Length, meter, boost::units::si::meter)
 DECLARE_CONST(Time, second, boost::units::si::second)
-DECLARE_CONST(Angular, radian, 1.0)
+DECLARE_CONST(Angle, radian, 1.0)
 DECLARE_CONST(Power, watt, boost::units::si::watt)
 DECLARE_CONST(Energy, joule, boost::units::si::joule)
 DECLARE_CONST(Frequency, hertz, boost::units::si::hertz)

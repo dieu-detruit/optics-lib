@@ -54,7 +54,7 @@ struct value_type<boost::units::quantity<D, T>> {
 DECLARE_LITERAL(Length, meter, m)
 DECLARE_LITERAL_SQ(Area, meter, m)
 DECLARE_LITERAL(Time, second, s)
-DECLARE_LITERAL(Angular, radian, rad)
+DECLARE_LITERAL(Angle, radian, rad)
 DECLARE_LITERAL(Power, watt, W)
 DECLARE_LITERAL(Energy, joule, J)
 DECLARE_LITERAL(Frequency, hertz, Hz)
